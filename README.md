@@ -20,7 +20,7 @@ How to use
 Demo online
 --------------------------------------
 
-	http://jsfiddle.net/yeikos/uTQT8/
+http://jsfiddle.net/yeikos/uTQT8/
 
 Example
 --------------------------------------
