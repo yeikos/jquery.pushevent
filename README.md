@@ -17,6 +17,11 @@ How to use
 
 	Selector is optional, only it must be used if event is delegate
 
+Demo online
+--------------------------------------
+
+	http://jsfiddle.net/yeikos/uTQT8/
+
 Example
 --------------------------------------
 
