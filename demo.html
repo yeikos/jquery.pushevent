@@ -1,0 +1,149 @@
+<html>
+
+	<head>
+
+		<title>jQuery.pushEvent</title>
+
+		<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.js"></script>
+		<script type="text/javascript" src="https://raw.github.com/yeikos/jquery.pushevent/master/jquery.pushevent.js"></script>
+
+		<script type="text/javascript">
+
+			$(function() {
+
+				// bind
+
+				$('#bind').on('click.one', function() {
+
+					alert(1);
+
+				}).on('click.two', function() {
+
+					alert(2);
+
+				}).on('click', function() {
+
+					alert('You cannot change position of this event (no namespace)');
+
+				}).on('click.three', function() {
+
+					alert(3);
+
+				}).on('click.four', function() {
+
+					alert(4);
+
+				});
+
+				// delegate
+
+				$('#container').on('click.one', '#delegate', function() {
+
+					alert(1);
+
+				}).on('click.two', '#delegate', function() {
+
+					alert(2);
+
+				}).on('click', '#delegate', function() {
+
+					alert('You cannot change position of this event (no namespace)');
+
+				}).on('click.three', '#delegate', function() {
+
+					alert(3);
+
+				}).on('click.four', '#delegate', function() {
+
+					alert(4);
+
+				});
+
+				// buttons
+
+				$('ul a').click(function(event) {
+
+					var spl = $(this).text().split(/\s*,\s*/),
+						events = spl[0],
+						position = spl[1];
+
+					$('#bind').pushEvent(events, position);
+
+					$('#container').pushEvent(events, '#delegate', position);
+
+					debug();
+
+					event.preventDefault();
+
+				});
+
+				// debug
+
+				var debug = (function debug() {
+
+					$.each(['bind', 'delegate'], function(index, id) {
+
+						var rdir = (id == 'delegate') ? 'container' : id;
+
+						var result = $.map($('#' + rdir).data('events').click, function(item) {
+
+							return item.namespace ? item.namespace : 'NONAMESPACE';
+			
+						});
+
+						$('#' + id + 'Events span').text(result.join(', '));
+
+					});
+					
+					return debug;
+
+				})();
+
+			});
+
+		</script>
+
+		<style>
+
+			a { text-decoration: none; }
+
+		</style>
+
+	</head>
+
+	<body>
+
+		<div id="container">
+
+			<h3>jQuery.pushEvent demo</h3>
+
+			<h3>Press any button</h3>
+
+			<button id="bind">bind click</button> <button id="delegate">delegate click</button>
+
+			<h3>Change event position</h3>
+
+			<ul>
+
+				<li><a href="#">click.one click.two click.three click.four, -1</a></li>
+				<li><a href="#">click.one click.two click.three click.four, 0</a></li>
+				<li><a href="#">click.three, 0</a></li>
+				<li><a href="#">click.three, 1</a></li>
+
+			</ul>
+
+			<h3>Debug (events position)</h3>
+
+			<ul>
+
+				<li id="bindEvents">bind events: <span></span></li>
+
+				<li id="delegateEvents">delegate events: <span></span></li>
+
+			</ul>
+
+		</div>
+		
+	</body>
+
+</html>
