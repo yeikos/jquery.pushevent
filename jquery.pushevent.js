@@ -1,5 +1,5 @@
 /*!
- * @name jQuery.pushEvent v1.0
+ * @name jQuery.pushEvent v1.0.1
  * @autor yeikos
  
  * Copyright 2012 - https://github.com/yeikos/jquery.pushevent
@@ -11,13 +11,7 @@
 
 	$.fn.pushEvent = function(events, selector, position) {
 
-		var data, items = {};
-
-		// Es necesario que el elemento tenga eventos
-
-		if (!(data = $(this).data('events')))
-
-			return;
+		var items = {};
 
 		// El argumento selector sólo es utilizado bajo los eventos "delegate"
 
@@ -52,31 +46,45 @@
 
 		});
 
-		// Recorremos los nombres de los eventos
+		// Recorremos los elementos
 
-		$.each(items, function(eventName, namespace) {
+		return $(this).each(function() {
 
-			var devent, sevent;
+			var data;
 
-			// El elemento debe de tener almenos un evento enlazado con dicho nombre
+			// Es necesario que el elemento tenga eventos
 
-			if (!(devent = data[eventName]) || !(sevent = devent.length))
+			if (!(data = $(this).data('events')))
 
 				return;
 
-			// Calculamos la posición (reusamos la variable eventName)
+			// Recorremos los nombres de los eventos
 
-			eventName = isNaN(position) ? 0 : (position < 0) ? (sevent-position%(sevent+1)) : (position%(sevent+1));
+			$.each(items, function(eventName, namespace) {
 
-			// Cambiamos la posición de los eventos
+				var devent, sevent;
 
-			$.each(namespace, function(index, name) {
+				// El elemento debe de tener almenos un evento enlazado con dicho nombre
 
-				$.each(devent, function(subindex, item) {
+				if (!(devent = data[eventName]) || !(sevent = devent.length))
 
-					if ((namespace.length && item.namespace == name) && (!selector || (selector && item.selector == selector)))
+					return;
 
-						devent.splice(eventName, 0, devent.splice(subindex, 1)[0]);
+				// Calculamos la posición (reusamos la variable eventName)
+
+				eventName = isNaN(position) ? 0 : (position < 0) ? (sevent-position%(sevent+1)) : (position%(sevent+1));
+
+				// Cambiamos la posición de los eventos
+
+				$.each(namespace, function(index, name) {
+
+					$.each(devent, function(subindex, item) {
+
+						if ((namespace.length && item.namespace == name) && (!selector || (selector && item.selector == selector)))
+
+							devent.splice(eventName, 0, devent.splice(subindex, 1)[0]);
+
+					});
 
 				});
 

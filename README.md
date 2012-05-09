@@ -1,10 +1,15 @@
-jQuery.pushevent v1.0
+jQuery.pushevent v1.0.1
 ==================================================
 
 What is this?
 --------------------------------------
 
 It's a jQuery plugin that allows reorder events easily.
+
+More info
+--------------------------------------
+
+http://www.yeikos.com/2012/05/jquery-pushevent-orden-de-los-eventos.html
 
 How to use
 --------------------------------------
@@ -24,6 +29,9 @@ http://jsfiddle.net/yeikos/uTQT8/
 
 Example
 --------------------------------------
+	
+	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.js"></script>
+	<script type="text/javascript" src="https://raw.github.com/yeikos/jquery.pushevent/master/jquery.pushevent.js"></script>
 
 	<button>Click me</button>
 
