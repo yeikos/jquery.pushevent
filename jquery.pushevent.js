@@ -1,11 +1,11 @@
 /*!
  * @name jQuery.pushEvent v1.0.1
- * @autor yeikos
- 
- * Copyright 2012 - https://github.com/yeikos/jquery.pushevent
- * GNU General Public License
- * http://www.gnu.org/licenses/gpl-3.0.txt
- */
+ * @author yeikos
+ * @repository https://github.com/yeikos/jquery.pushevent
+
+ * Copyright 2013 yeikos - MIT license
+ * https://raw.github.com/yeikos/jquery.pushevent/master/LICENSE
+*/
 
 ;(function($, undefined) {
 
