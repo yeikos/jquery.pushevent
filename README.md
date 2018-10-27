@@ -6,11 +6,6 @@ What is this?
 
 It's a jQuery plugin that allows reorder events easily.
 
-More info
---------------------------------------
-
-http://www.yeikos.com/2012/05/jquery-pushevent-orden-de-los-eventos.html
-
 How to use
 --------------------------------------
 
@@ -31,7 +26,7 @@ Example
 --------------------------------------
 	
 	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.js"></script>
-	<script type="text/javascript" src="http://files.yeikos.com/jquery.pushevent.js"></script>
+	<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/yeikos/jquery.pushevent/jquery.pushevent.js"></script>
 
 	<button>Click me</button>
 
